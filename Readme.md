@@ -134,7 +134,7 @@ npm install inline-functions rollup
 Then, in your [`rollup.config.js`](./test/rollup.config.ts):
 
 ```js
-import inlineFunction from "inlin-function/rollup";
+import inlineFunction from "inline-function/rollup";
 import { macros } from "./macros";
 
 export default {
