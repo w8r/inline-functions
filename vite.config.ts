@@ -6,6 +6,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   build: {
+    minify: false,
     lib: {
       entry: [
         "./src/esbuild.ts",

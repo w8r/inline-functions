@@ -5,11 +5,14 @@ import { getCompiler } from "./utils";
 import { Options } from "./types";
 export * from "./types";
 
-export default function inlineFunction({ macros = {} }: Options): Plugin {
+export default function inlineFunction({
+  macros = {},
+  verbose = false,
+}: Options): Plugin {
   return {
     name,
     setup(build) {
-      const compile = getCompiler(macros);
+      const compile = getCompiler(macros, verbose);
       build.onLoad({ filter: /.*/ }, async (args) => {
         const source = await fs.promises.readFile(args.path, "utf8");
         // Replace the calculate function calls with 42

@@ -1,21 +1,7 @@
 import { defineConfig } from "vite";
 import inlineFunction from "../dist/vite";
 import { resolve } from "path";
-
-let counter = 0;
-const macros = {
-  x: (a, b) => a + b,
-  add: (a, b) => {
-    const _a = `_a${counter++}`;
-    const _b = `_b${counter++}`;
-    return `
-  const ${_a} = ${a};
-  const ${_b}  = ${b};
-  ${_a}[0] = ${_a}[0] + ${_b}[0];
-  ${_a}[1] = ${_a}[1] + ${_b}[1];
-  `;
-  },
-};
+import { macros } from "./macros";
 
 export default defineConfig({
   build: {

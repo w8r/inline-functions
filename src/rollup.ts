@@ -3,8 +3,11 @@ import { Plugin } from "rollup";
 import { getCompiler } from "./utils";
 import { Options } from "./types";
 
-export default function inlineFunction({ macros = {} }: Options): Plugin {
-  const compile = getCompiler(macros);
+export default function inlineFunction({
+  macros = {},
+  verbose = false,
+}: Options): Plugin {
+  const compile = getCompiler(macros, verbose);
   return {
     name,
     transform(code) {

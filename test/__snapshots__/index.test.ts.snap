@@ -1,30 +1,80 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`plugins > esbuild 1`] = `
-"(() => {
-  // test/utils.ts
-  var fn2 = (a, b) => a + b;
+"// test/utils.ts
+function add(u, v) {
+  u[0] = u[0] + v[0];
+  u[1] = u[1] + v[1];
+}
+var fn2 = (a, b) => a + b;
 
-  // test/test.ts
-  var foo = [4, 5];
-  var bar = [5, fn2(6, 12)];
-  var ZERO = () => [0, 0];
-  var baz = [33, 22];
-  var _a0 = baz;
-  var _b1 = ZERO();
-  _a0[0] = _a0[0] + _b1[0];
-  _a0[1] = _a0[1] + _b1[1];
-  console.log(foo, baz);
-  var _a2 = ZERO();
-  var _b3 = bar;
-  _a2[0] = _a2[0] + _b3[0];
-  _a2[1] = _a2[1] + _b3[1];
-})();
+// test/test.ts
+var foo = [4, 5];
+var bar = [5, fn2(6, 12)];
+var ZERO = () => [0, 0];
+var baz = [33, 22];
+var _a0 = baz;
+var _b1 = ZERO();
+_a0[0] = _a0[0] + _b1[0];
+_a0[1] = _a0[1] + _b1[1];
+console.log(foo, baz);
+var _a2 = ZERO();
+var _b3 = bar;
+_a2[0] = _a2[0] + _b3[0];
+_a2[1] = _a2[1] + _b3[1];
+var crossProduct = (u, v, dest) => u[0] * v[1] - u[1] * v[0];
+var crossProduct2 = crossProduct;
+var add2 = add;
+function inlined() {
+  const foo2 = [4, 5];
+  const bar2 = [5, fn2(6, 12)];
+  const baz2 = [33, 22];
+  for (let i = 0; i < 100; i++) {
+    const _a4 = foo2;
+    const _b5 = bar2;
+    _a4[0] = _a4[0] + _b5[0];
+    _a4[1] = _a4[1] + _b5[1];
+    const _a6 = baz2;
+    const _b7 = bar2;
+    _a6[0] = _a6[0] + _b7[0];
+    _a6[1] = _a6[1] + _b7[1];
+    const _a8 = foo2;
+    const _b9 = baz2;
+    _a8[0] = _a8[0] + _b9[0];
+    _a8[1] = _a8[1] + _b9[1];
+    const _a10 = foo2;
+    const _b11 = bar2;
+    const _d12 = baz2;
+    _d12[0] = _a10[0] * _b11[0];
+    _d12[1] = _a10[1] * _b11[1];
+  }
+  return foo2;
+}
+function notInlined() {
+  const foo2 = [4, 5];
+  const bar2 = [5, fn2(6, 12)];
+  const baz2 = [33, 22];
+  for (let i = 0; i < 100; i++) {
+    add2(foo2, bar2);
+    add2(baz2, bar2);
+    add2(foo2, baz2);
+    crossProduct2(foo2, bar2, baz2);
+  }
+  return foo2;
+}
+export {
+  inlined,
+  notInlined
+};
 "
 `;
 
 exports[`plugins > rollup 1`] = `
-"'use strict';
+"function add(u, v) {
+    u[0] = u[0] + v[0];
+    u[1] = u[1] + v[1];
+}
+var fn2 = function (a, b) { return a + b; };
 
 var foo = [4, 5];
 var ZERO = function () { return [0, 0]; };
@@ -37,11 +87,60 @@ _a0[0] = _a0[0] + _b1[0];
 _a0[1] = _a0[1] + _b1[1];
 // so that dead code removal doesn't remove the function altogether
 console.log(foo, baz);
+var crossProduct = function (u, v, dest) {
+    return u[0] * v[1] - u[1] * v[0];
+};
+var crossProduct2 = crossProduct;
+var add2 = add;
+function inlined() {
+    var foo = [4, 5];
+    var bar = [5, fn2(6, 12)];
+    var baz = [33, 22];
+    for (var i = 0; i < 100; i++) {
+        const _a4 = foo;
+        const _b5  = bar;
+        _a4[0] = _a4[0] + _b5[0];
+        _a4[1] = _a4[1] + _b5[1];
+        const _a6 = baz;
+        const _b7  = bar;
+        _a6[0] = _a6[0] + _b7[0];
+        _a6[1] = _a6[1] + _b7[1];
+        const _a8 = foo;
+        const _b9  = baz;
+        _a8[0] = _a8[0] + _b9[0];
+        _a8[1] = _a8[1] + _b9[1];
+        const _a10 = foo;
+        const _b11  = bar;
+        const _d12  = baz;
+        _d12[0] = _a10[0] * _b11[0];
+        _d12[1] = _a10[1] * _b11[1];
+    }
+    return foo;
+}
+function notInlined() {
+    var foo = [4, 5];
+    var bar = [5, fn2(6, 12)];
+    var baz = [33, 22];
+    for (var i = 0; i < 100; i++) {
+        add2(foo, bar);
+        add2(baz, bar);
+        add2(foo, baz);
+        crossProduct2(foo, bar);
+    }
+    return foo;
+}
+
+export { inlined, notInlined };
 "
 `;
 
 exports[`plugins > vite 1`] = `
-"const foo = [4, 5];
+"function add(u, v) {
+  u[0] = u[0] + v[0];
+  u[1] = u[1] + v[1];
+}
+const fn2 = (a, b) => a + b;
+const foo = [4, 5];
 const ZERO = () => [0, 0];
 const baz = [33, 22];
 const _a0 = baz;
@@ -49,5 +148,49 @@ const _b1 = ZERO();
 _a0[0] = _a0[0] + _b1[0];
 _a0[1] = _a0[1] + _b1[1];
 console.log(foo, baz);
+const crossProduct = (u, v, dest) => u[0] * v[1] - u[1] * v[0];
+const crossProduct2 = crossProduct;
+const add2 = add;
+function inlined() {
+  const foo2 = [4, 5];
+  const bar2 = [5, fn2(6, 12)];
+  const baz2 = [33, 22];
+  for (let i = 0; i < 100; i++) {
+    const _a4 = foo2;
+    const _b5 = bar2;
+    _a4[0] = _a4[0] + _b5[0];
+    _a4[1] = _a4[1] + _b5[1];
+    const _a6 = baz2;
+    const _b7 = bar2;
+    _a6[0] = _a6[0] + _b7[0];
+    _a6[1] = _a6[1] + _b7[1];
+    const _a8 = foo2;
+    const _b9 = baz2;
+    _a8[0] = _a8[0] + _b9[0];
+    _a8[1] = _a8[1] + _b9[1];
+    const _a10 = foo2;
+    const _b11 = bar2;
+    const _d12 = baz2;
+    _d12[0] = _a10[0] * _b11[0];
+    _d12[1] = _a10[1] * _b11[1];
+  }
+  return foo2;
+}
+function notInlined() {
+  const foo2 = [4, 5];
+  const bar2 = [5, fn2(6, 12)];
+  const baz2 = [33, 22];
+  for (let i = 0; i < 100; i++) {
+    add2(foo2, bar2);
+    add2(baz2, bar2);
+    add2(foo2, baz2);
+    crossProduct2(foo2, bar2);
+  }
+  return foo2;
+}
+export {
+  inlined,
+  notInlined
+};
 "
 `;
