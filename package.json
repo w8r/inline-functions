@@ -1,7 +1,7 @@
 {
   "name": "inline-functions",
   "version": "0.0.1",
-  "description": "",
+  "description": "This library allows you to inline functions in your JS/TS code. This is useful for performance reasons, as it allows you to avoid function calls and instead inline the function body directly. It provides plugins for Vite, Rollup and esbuild.",
   "type": "module",
   "files": [
     "dist"
@@ -56,13 +56,18 @@
     "rollup": "^3.26.1",
     "vite": "^4.3.9"
   },
-  "keywords": [],
+  "keywords": [
+    "performance",
+    "inline",
+    "vite",
+    "rollup",
+    "esbuild"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.2",
     "@rollup/pluginutils": "^5.0.2",
-    "benchmark": "^2.1.4",
     "benny": "^3.7.1",
     "esbuild": "^0.17.19",
     "rollup": "^3.26.1",

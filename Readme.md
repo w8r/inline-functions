@@ -1,8 +1,8 @@
 # `inline-functions`
 
-This plugin allows you to inline functions in your code. This is useful for performance reasons, as it allows you to avoid function calls and instead inline the function body directly.
+This library allows you to inline functions in your JS/TS code. This is useful for performance reasons, as it allows you to avoid function calls and instead inline the function body directly.
 
-This plugin is a collection of plugins for different build systems. It is designed to be used with [`vite`](https://vitejs.dev), [`rollup`](https://rollupjs.org), and [`esbuild`](https://esbuild.github.io).
+It comes as a collection of plugins for different build systems. It is designed to be used with [`vite`](https://vitejs.dev), [`rollup`](https://rollupjs.org), and [`esbuild`](https://esbuild.github.io).
 
 Inspired by the clever trick used in [`robust-predicates`](https://github.com/mourner/robust-predicates/blob/c20b0ab9ab4c4f2969f3611908c41ce76aa0e7a7/compile.js) by @mourner.
 
@@ -145,4 +145,37 @@ export default {
   plugins: [inlineFunction({ macros })],
 };
 
+```
+
+### Examples
+
+See [`test`](./test) for examples and benchmarks.
+
+### Some benchmarks
+
+```
+Running "Vite" suite...
+Progress: 100%
+
+  Inlined:
+    1 464 435 ops/s, ±4.63%   | fastest
+
+  Not inlined:
+    1 187 396 ops/s, ±5.75%   | slowest, 18.92% slower
+
+Running "Rollup" suite...
+
+  Inlined:
+    1 560 921 ops/s, ±1.27%   | fastest
+
+  Not inlined:
+    1 302 231 ops/s, ±0.11%   | slowest, 16.57% slower
+
+Running "esbuild" suite...
+
+  Inlined:
+    1 564 889 ops/s, ±0.80%   | fastest
+
+  Not inlined:
+    1 281 501 ops/s, ±1.02%   | slowest, 18.11% slower
 ```

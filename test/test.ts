@@ -33,6 +33,11 @@ export function inlined() {
     crossProduct(foo, bar, baz);
   }
 
+  for (let i = 0; i < 100; i++) {
+    crossProduct(foo, bar, baz);
+    add(baz, bar);
+  }
+
   return foo;
 }
 
@@ -46,6 +51,11 @@ export function notInlined() {
     add2(baz, bar);
     add2(foo, baz);
     crossProduct2(foo, bar, baz);
+  }
+
+  for (let i = 0; i < 100; i++) {
+    crossProduct2(foo, bar, baz);
+    add2(baz, bar);
   }
 
   return foo;
