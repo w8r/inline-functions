@@ -1,4 +1,4 @@
-# `inline-function`
+# `inline-functions`
 
 This plugin allows you to inline functions in your code. This is useful for performance reasons, as it allows you to avoid function calls and instead inline the function body directly.
 
@@ -9,7 +9,7 @@ Inspired by the clever trick used in [`robust-predicates`](https://github.com/mo
 ## Installation
 
 ```bash
-npm install inline-function [vite] [rollup] [esbuild]
+npm install inline-functions [vite] [rollup] [esbuild]
 ```
 
 ## How it works
@@ -86,14 +86,14 @@ console.log(foo, baz);
 ### Vite
 
 ```bash
-npm install inline-function vite
+npm install inline-functions vite
 ```
 
 Then, in your [`vite.config.ts`](./test/vite.config.ts):
 
 ```ts
 import { defineConfig } from "vite";
-import inlineFunction from "inline-function/vite";
+import inlineFunction from "inline-functions/vite";
 import { resolve } from "path";
 
 import { macros } from "./macros";
@@ -107,13 +107,13 @@ export default defineConfig({
 ### Esbuild
 
 ```bash
-npm install inline-function esbuild
+npm install inline-functions esbuild
 ```
 
 Then, in your [`esbuild.config.js`](./test/esbuild.config.js):
 
 ```ts
-import inlineFunction from "inline-function/esbuild";
+import inlineFunction from "inline-functions/esbuild";
 import { macros } from "./macros";
 esbuild
   .build({
@@ -128,7 +128,7 @@ esbuild
 ### Rollup
 
 ```bash
-npm install inline-function rollup
+npm install inline-functions rollup
 ```
 
 Then, in your [`rollup.config.js`](./test/rollup.config.ts):
