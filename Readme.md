@@ -147,6 +147,14 @@ export default {
 
 ```
 
+### Verbose mode
+
+For debugging, you can pass `{ macros: ..., verbose: true }` to the plugin in options, and it will print out all the replacements into `stdout`.
+
+### Limitations
+
+Unpredictable amount, because there's no code analysis, it's just a string replacement. The main limitation for now is that the inlined functions cannot `return`, because it's not obvious how it will fit into the context. You can use the expressions as arguments, but be careful with that. The replacements really have to be simple in order to work efficiently.
+
 ### Examples
 
 See [`test`](./test) for examples and benchmarks.
