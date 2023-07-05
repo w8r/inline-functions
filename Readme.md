@@ -1,4 +1,4 @@
-# `inline-functions`
+# `inline-functions` [![npm version](https://badge.fury.io/js/inline-functions.svg)](https://badge.fury.io/js/inline-functions)
 
 This library allows you to inline functions in your JS/TS code. This is useful for performance reasons, as it allows you to avoid function calls and instead inline the function body directly.
 
