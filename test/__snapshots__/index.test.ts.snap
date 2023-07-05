@@ -48,6 +48,17 @@ function inlined() {
     _d12[0] = _a10[0] * _b11[0];
     _d12[1] = _a10[1] * _b11[1];
   }
+  for (let i = 0; i < 100; i++) {
+    const _a13 = foo2;
+    const _b14 = bar2;
+    const _d15 = baz2;
+    _d15[0] = _a13[0] * _b14[0];
+    _d15[1] = _a13[1] * _b14[1];
+    const _a16 = baz2;
+    const _b17 = bar2;
+    _a16[0] = _a16[0] + _b17[0];
+    _a16[1] = _a16[1] + _b17[1];
+  }
   return foo2;
 }
 function notInlined() {
@@ -59,6 +70,10 @@ function notInlined() {
     add2(baz2, bar2);
     add2(foo2, baz2);
     crossProduct2(foo2, bar2, baz2);
+  }
+  for (let i = 0; i < 100; i++) {
+    crossProduct2(foo2, bar2, baz2);
+    add2(baz2, bar2);
   }
   return foo2;
 }
@@ -115,6 +130,17 @@ function inlined() {
         _d12[0] = _a10[0] * _b11[0];
         _d12[1] = _a10[1] * _b11[1];
     }
+    for (var i = 0; i < 100; i++) {
+        const _a13 = foo;
+        const _b14  = bar;
+        const _d15  = baz;
+        _d15[0] = _a13[0] * _b14[0];
+        _d15[1] = _a13[1] * _b14[1];
+        const _a16 = baz;
+        const _b17  = bar;
+        _a16[0] = _a16[0] + _b17[0];
+        _a16[1] = _a16[1] + _b17[1];
+    }
     return foo;
 }
 function notInlined() {
@@ -126,6 +152,10 @@ function notInlined() {
         add2(baz, bar);
         add2(foo, baz);
         crossProduct2(foo, bar);
+    }
+    for (var i = 0; i < 100; i++) {
+        crossProduct2(foo, bar);
+        add2(baz, bar);
     }
     return foo;
 }
@@ -174,6 +204,17 @@ function inlined() {
     _d12[0] = _a10[0] * _b11[0];
     _d12[1] = _a10[1] * _b11[1];
   }
+  for (let i = 0; i < 100; i++) {
+    const _a13 = foo2;
+    const _b14 = bar2;
+    const _d15 = baz2;
+    _d15[0] = _a13[0] * _b14[0];
+    _d15[1] = _a13[1] * _b14[1];
+    const _a16 = baz2;
+    const _b17 = bar2;
+    _a16[0] = _a16[0] + _b17[0];
+    _a16[1] = _a16[1] + _b17[1];
+  }
   return foo2;
 }
 function notInlined() {
@@ -185,6 +226,10 @@ function notInlined() {
     add2(baz2, bar2);
     add2(foo2, baz2);
     crossProduct2(foo2, bar2);
+  }
+  for (let i = 0; i < 100; i++) {
+    crossProduct2(foo2, bar2);
+    add2(baz2, bar2);
   }
   return foo2;
 }
