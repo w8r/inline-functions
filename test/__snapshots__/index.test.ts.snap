@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`plugins > esbuild 1`] = `
+"(() => {
+  // test/utils.ts
+  var fn2 = (a, b) => a + b;
+
+  // test/test.ts
+  var foo = [4, 5];
+  var bar = [5, fn2(6, 12)];
+  var ZERO = () => [0, 0];
+  var baz = [33, 22];
+  var _a0 = baz;
+  var _b1 = ZERO();
+  _a0[0] = _a0[0] + _b1[0];
+  _a0[1] = _a0[1] + _b1[1];
+  console.log(foo, baz);
+  var _a2 = ZERO();
+  var _b3 = bar;
+  _a2[0] = _a2[0] + _b3[0];
+  _a2[1] = _a2[1] + _b3[1];
+})();
+"
+`;
+
+exports[`plugins > rollup 1`] = `
+"'use strict';
+
+var foo = [4, 5];
+var ZERO = function () { return [0, 0]; };
+var baz = [33, 22];
+// note that you can use the function in the macro,
+// if your replacement function can handle it
+const _a0 = baz;
+const _b1  = ZERO();
+_a0[0] = _a0[0] + _b1[0];
+_a0[1] = _a0[1] + _b1[1];
+// so that dead code removal doesn't remove the function altogether
+console.log(foo, baz);
+"
+`;
+
+exports[`plugins > vite 1`] = `
+"const foo = [4, 5];
+const ZERO = () => [0, 0];
+const baz = [33, 22];
+const _a0 = baz;
+const _b1 = ZERO();
+_a0[0] = _a0[0] + _b1[0];
+_a0[1] = _a0[1] + _b1[1];
+console.log(foo, baz);
+"
+`;
