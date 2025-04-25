@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { name } from "../package.json";
-import { Plugin } from "esbuild";
+import type { Plugin } from "esbuild";
 import { getCompiler } from "./utils";
 import { Options } from "./types";
 export * from "./types";

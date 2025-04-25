@@ -1,5 +1,5 @@
 import { name } from "../package.json";
-import { transformWithEsbuild, Plugin } from "vite";
+import { transformWithEsbuild, type Plugin } from "vite";
 import { Options } from "./types";
 import { getCompiler } from "./utils";
 

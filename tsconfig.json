@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }

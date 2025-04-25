@@ -1,5 +1,5 @@
 import { name } from "../package.json";
-import { Plugin } from "rollup";
+import type { Plugin } from "rollup";
 import { getCompiler } from "./utils";
 import { Options } from "./types";
 

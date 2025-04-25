@@ -6,7 +6,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   build: {
-    minify: false,
+    minify: true,
     lib: {
       entry: [
         "./src/esbuild.ts",
@@ -22,9 +22,10 @@ export default defineConfig({
   },
   plugins: [
     dts({
-      root: "./src",
-      include: ["./**/*.ts"],
+      root: "./src/",
+      include: ["**/*.ts"],
       outDir: "../dist",
+      copyDtsFiles: true,
     }),
   ],
   test: {
